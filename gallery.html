@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #fff8e1, #ffe0b2);
+}
+
+/* 🔙 Back Button */
+.back-home {
+  position: fixed;
+  top: 5px;
+  left: 20px;
+
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff9800, #ffcc00);
+  color: white;
+
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+.back-home:hover {
+  transform: scale(1.05);
+}
+
+/* Section */
+.gallery-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Title */
+.gallery-title-box {
+  display: inline-block;
+  padding: 12px 35px;
+  margin-bottom: 40px;
+
+  background: white;
+  border-radius: 15px;
+
+  font-size: 28px;
+  font-weight: 600;
+  color: #ff6f00;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Grid */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Image Card */
+.gallery-item {
+  overflow: hidden;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* 🔥 Fullscreen */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Close button */
+.lightbox span {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 🔙 Back Button -->
+<a href="index.html" class="back-home">← Back to Home</a>
+
+<section class="gallery-section">
+
+  <div class="gallery-title-box">Gallery</div>
+
+  <div class="gallery-container">
+
+    <div class="gallery-item"><img src="images/img1.jpg"></div>
+    <div class="gallery-item"><img src="images/img3.jpg"></div>
+    <div class="gallery-item"><img src="images/img4.jpg"></div>
+    <div class="gallery-item"><img src="images/img5.jpg"></div>
+    <div class="gallery-item"><img src="images/Gal0.jpg"></div>
+    <div class="gallery-item"><img src="images/Gal2.jpg"></div>
+    <div class="gallery-item"><img src="images/Gal4.jpg"></div>
+    <div class="gallery-item"><img src="images/Gal5.jpg"></div>
+    <div class="gallery-item"><img src="images/Gal8.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall0.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall1.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall2.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall3.jpg"></div>
+
+    <div class="gallery-item"><img src="images/Gall6.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall8.jpg"></div>
+    <div class="gallery-item"><img src="images/Gall9.jpg"></div>
+    <div class="gallery-item"><img src="images/imgA.jpg"></div>
+    <div class="gallery-item"><img src="images/imgB.jpg"></div>
+    <div class="gallery-item"><img src="images/imgC.jpg"></div>
+    <div class="gallery-item"><img src="images/imgD.jpg"></div>
+    <div class="gallery-item"><img src="images/imgE.jpg"></div>
+    <div class="gallery-item"><img src="images/imgF.jpg"></div>
+    <div class="gallery-item"><img src="images/imgG.jpg"></div>
+    <div class="gallery-item"><img src="images/imgH.jpg"></div>
+    <div class="gallery-item"><img src="images/imgI.jpg"></div>
+    <div class="gallery-item"><img src="images/imgJ.jpg"></div>
+    <div class="gallery-item"><img src="images/imgK.jpg"></div>
+    <div class="gallery-item"><img src="images/imgL.jpg"></div>
+    <div class="gallery-item"><img src="images/imgM.jpg"></div>
+    <div class="gallery-item"><img src="images/imgN.jpg"></div>
+    <div class="gallery-item"><img src="images/imgO.jpg"></div>
+    <div class="gallery-item"><img src="images/imgP.jpg"></div>
+    <div class="gallery-item"><img src="images/imgQ.jpg"></div>
+    <div class="gallery-item"><img src="images/imgR.jpg"></div>
+    <div class="gallery-item"><img src="images/imgS.jpg"></div>
+    <div class="gallery-item"><img src="images/imgT.jpg"></div>
+    <div class="gallery-item"><img src="images/imgU.jpg"></div>
+
+  </div>
+
+</section>
+
+<!-- 🔥 Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span onclick="closeImage()">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script>
+
+const images = document.querySelectorAll('.gallery-item img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+function closeImage() {
+  lightbox.style.display = 'none';
+}
+
+lightbox.addEventListener('click', (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.style.display = 'none';
+  }
+});
+
+</script>
+
+</body>
+</html>
