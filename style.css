@@ -306,7 +306,7 @@ body {
   margin-right: auto;
 }
 body {
-  background: url("images/bg.jpg");
+  background: url("bg.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
