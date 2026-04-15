@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puja Live System</title>
+
+<style>
+
+/* 🌇 Background */
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(to right, orange, red);
+  text-align: center;
+}
+
+/* 🔴 LIVE Badge */
+.live-badge {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: red;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: none;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; }
+}
+
+/* 📰 Updates */
+.updates-section {
+  margin-top: 80px;
+}
+
+.updates-title {
+  display: inline-block;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.update-item {
+  background: white;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+}
+
+.time {
+  font-size: 12px;
+  color: gray;
+}
+
+/* 🔔 Popup Button */
+.update-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.4s;
+}
+
+.update-popup.show {
+  transform: translateX(-50%) scale(1);
+}
+
+.update-popup button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: orange;
+  color: white;
+  border-radius: 10px;
+}
+/* Common */
+.back-btn {
+  position: fixed;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* 🔝 Top left */
+.back-btn.top {
+  top: 15px;
+  left: 15px;
+  padding: 8px 15px;
+  background: white;
+}
+
+/* 🔻 Bottom floating */
+.back-btn.bottom {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  background: orange;
+  color: white;
+  border-radius: 30px;
+}
+
+/* 🔘 Icon button (small circle) */
+.back-btn.icon {
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 18px;
+}
+
+/* Hover */
+.back-btn:hover {
+  background: red;
+  color: white;
+}
+.back-btn.icon {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: black;
+  color: white;
+
+  border-radius: 50%;   /* perfect circle */
+  text-decoration: none; /* remove underline */
+
+  font-size: 20px;
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Hover effect */
+.back-btn.icon:hover {
+  background: orange;
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- 🔙 Icon Style Back -->
+<a href="index.html" class="back-btn icon">←</a>
+<!-- 🔴 LIVE -->
+<div id="liveBadge" class="live-badge">🔴 LIVE</div>
+
+<!-- 🔔 Popup -->
+<div id="updatePopup" class="update-popup"></div>
+
+<!-- 📰 Updates -->
+<section id="updatesSection" class="updates-section">
+  <h2 class="updates-title">📰 Puja Updates</h2>
+  <div id="updatesList"></div>
+</section>
+
+<script>
+
+// 🪔 PUJA EVENTS (EDIT TIMES HERE)
+const events = [
+  {
+    name: "🪔 Saptami Puja Started",
+    time: new Date("Nov 17, 2026 06:00:00").getTime()
+  },
+  {
+    name: "🌸 Ashtami Anjali Started",
+    time: new Date("Nov 18, 2026 08:30:00").getTime()
+  },
+  {
+    name: "🍛 Navami Bhog Distribution Started",
+    time: new Date("Nov 19, 2026 12:00:00").getTime()
+  }
+   {
+    name: "🎇 Dashami procession started",
+    time: new Date("Nov 19, 2026 12:00:00").getTime()
+  } 
+];
+
+const updatesList = document.getElementById("updatesList");
+const popup = document.getElementById("updatePopup");
+const liveBadge = document.getElementById("liveBadge");
+
+let triggeredEvents = [];
+
+// ⏳ CHECK EVERY SECOND
+setInterval(() => {
+
+  const now = new Date().getTime();
+
+  events.forEach((event, index) => {
+
+    if (now >= event.time && !triggeredEvents.includes(index)) {
+
+      triggeredEvents.push(index);
+
+      // 🔴 Show LIVE badge
+      liveBadge.style.display = "block";
+
+      // ➕ Add update
+      addUpdate(event.name);
+
+      // 🔔 Popup
+      showPopup(event.name);
+    }
+
+  });
+
+}, 1000);
+
+// ➕ ADD UPDATE
+function addUpdate(text) {
+
+  const div = document.createElement("div");
+  div.className = "update-item";
+
+  const time = new Date().toLocaleTimeString();
+
+  div.innerHTML = `
+    ${text}
+    <div class="time">Just now • ${time}</div>
+  `;
+
+  updatesList.prepend(div);
+}
+
+// 🔔 POPUP
+function showPopup(message) {
+
+  popup.innerHTML = `
+    <p>${message}</p>
+    <button onclick="goToUpdates()">View Updates</button>
+  `;
+
+  popup.classList.add("show");
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+  }, 6000);
+}
+
+// 🔗 SCROLL TO UPDATES
+function goToUpdates() {
+  document.getElementById("updatesSection")
+    .scrollIntoView({ behavior: "smooth" });
+}
+
+</script>
+
+</body>
+</html>
