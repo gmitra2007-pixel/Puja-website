@@ -9,18 +9,36 @@
 </head>
 
 <body>
+  
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">My Puja</div>
+<nav class="navbar">
 
-  <div class="menu">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Gallery</a>
-    <a href="#">Contact</a>
+  <!-- ☰ Menu Icon -->
+  <div class="menu-icon" onclick="toggleMenu()">
+    ☰
   </div>
+
+  <!-- 🪔 Center Logo -->
+  <div class="logo">
+    <img src="images/logo.png" alt="Committee Logo">
+  </div>
+
+  <!-- 🔍 Search Icon -->
+  <div class="search-icon" onclick="toggleSearch()">
+    🔍
+  </div>
+
+</nav>
+
+<!-- 🔽 Hidden Menu -->
+<div class="side-menu" id="sideMenu">
+  <a href="#about">About</a>
+  <a href="#explore">Explore</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#schedule">Schedule</a>
 </div>
+  
+
 <div class="hero">
   <div class="slide"></div>
 
@@ -52,6 +70,8 @@
 
 </section>
 
+  
+
 <h2 class="section-title" id="explore">Explore</h2>
 
 <div class="cards">
@@ -60,22 +80,37 @@
 </a></div>
   <div class="card">📸 Gallery
   </div>
-  <div class="card"><a href="#Donate-section" class="explore-card">
-  <span>💰 Donate</span></div>
+  <div class="card"><a href="donation.html" class="explore-btn">💰 Donate</a></div>
   <div class="card"><a href="https://maps.app.goo.gl/i9G49cnEXqiMzRi1A" 
    target="_blank">
  📍 Location
 </a></div>
 </div>
+<section class="gallery-section">
 
-<h2 class="section-title">Gallery</h2>
-<div class="gallery">
+  <h2 class="gallery-title">Gallery</h2>
+
+  <div class="gallery-container">
+
+    <button class="nav-btn left" onclick="scrollGallery(-1)">❮</button>
+
+    <div class="gallery-grid" id="galleryGrid">
+
   <img  src="Gall5.jpg">
   <img src="Gal2.jpg">
   <img src="Gall9.jpg">
 <img src="Gal4.jpg">
   <img src="Gal5.jpg">
 <img src="Gal8.jpg">
+
+    </div>
+
+    <button class="nav-btn right" onclick="scrollGallery(1)">❯</button>
+
+  </div>
+
+</section>
+
    <!-- 🔥 Button to go to Gallery page -->
    <a href="gallery.html#gallery-section" class="btn">
      Explore Gallery
@@ -87,27 +122,28 @@
 
   <!-- 🎥 MAIN VIDEO -->
   <video id="mainVideo" controls playsinline webkit-playsinline poster="thumb.jpg">
-   // <source src="" type="mp4">
- // </video>
+    <source src="videos" type="videos/mp4">
+  </video>
 
   <!-- 📃 PLAYLIST -->
   <div class="playlist">
 
-    <div class="video-item active" onclick="playVideo('vid1.mp4', this)">
+    <div class="video-item active" onclick="playVideo('videos/vid1.mp4', this)">
       Logo Inauguration of 60 years
     </div>
 
-    <div class="video-item" onclick="playVideo('vid 2.mp4', this)">
+    <div class="video-item" onclick="playVideo('videos/vid2.mp4', this)">
       Theme Song
     </div>
 
-    <div class="video-item" onclick="playVideo('vid3.mp4', this)">
+    <div class="video-item" onclick="playVideo('Videos/Vid3.mp4', this)">
      হীরকের শেষে হরিদ্রাডাঙ্গা
     </div>
 
   </div>
 
 </div>
+
 
 <h2 class="section-title">জগদ্ধাত্রী পূজা</h2>
 <section id="schedule-section">
@@ -180,49 +216,19 @@
     <p>Seconds</p>
   </div>
 </div>
-<section id="Donate-section">
-  
+<div class="puja-start-box">
 
-  <!-- Donation cards -->
-</section>
-<section class="donation-section">
+  <a href="updates.html" class="update-btn">View Updates</a>
+</div>
 
-  <h2 class="donation-title">🙏 Donate for Puja</h2>
 
-  <div class="donation-box">
-
-    <!-- 💰 Amount Buttons -->
-    <div class="amount-buttons">
-      <button onclick="setAmount(101)">₹101</button>
-      <button onclick="setAmount(251)">₹251</button>
-      <button onclick="setAmount(501)">₹501</button>
-      <button onclick="setAmount(1001)">₹1001</button>
-    </div>
-
-    <!-- ✍️ Custom Amount -->
-    <input type="number" id="amount" placeholder="Enter amount (₹)">
-
-    <!-- 👤 Name -->
-    <input type="text" id="name" placeholder="Your Name">
-
-    <!-- 📱 UPI Button -->
-    <a id="upiLink" class="donate-btn">Donate Now</a>
-
-    <!-- 📷 QR Code -->
-    <div class="qr-box">
-      <img src="QR.png" alt="UPI QR">
-      <p>Scan & Pay</p>
-    </div>
-
-  </div>
-
-</section>
 
 
 <!-- FOOTER -->
 <div class="footer">
   <p>Contact: 9876543210</p>
-  <p>© Gourav Mitra</p>
+  <p>© Haridradanga Sarbojonin Jagadhatri Pujo committee</p>
+  <p16>Developed by Gourav Mitra</p16>
 </div>
 
 <script src="script.js"></script>
