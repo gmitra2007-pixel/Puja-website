@@ -15,11 +15,11 @@ window.addEventListener("scroll", () => {
   }
 });
 const images = [
-  "img1.jpg",
-  "img2.jpg",
-  "img3.jpg",
-  "img4.jpg",
-  "img5.jpg"
+  "images/img1.jpg",
+  "images/img2.jpg",
+  "images/img3.jpg",
+  "images/img4.jpg",
+  "images/img5.jpg"
 ];
 
 let index = 0;
@@ -74,6 +74,7 @@ function updateCountdown() {
 }
 
 setInterval(updateCountdown, 1000);
+
 function playVideo(src, element) {
   const video = document.getElementById("mainVideo");
 
@@ -103,6 +104,7 @@ function playVideo(src, element) {
   // add active
   element.classList.add("active");
 }
+
 function setAmount(value) {
   document.getElementById("amount").value = value;
 }
@@ -145,3 +147,24 @@ const marker = new google.maps.Marker({
   },
   animation: google.maps.Animation.DROP
 })
+function scrollGallery(direction) {
+  const container = document.getElementById("galleryGrid");
+
+  const scrollAmount = 200;
+
+  container.scrollLeft += direction * scrollAmount;
+}
+const popupBtn = document.getElementById("updatePopup");
+
+// When countdown ends
+if (distance <= 0 && !liveStarted) {
+
+  liveStarted = true;
+  clearInterval(timer);
+
+  // Show popup button
+  popupBtn.classList.add("show");
+}
+function goToUpdates() {
+  window.location.href = "updates.html";
+}
