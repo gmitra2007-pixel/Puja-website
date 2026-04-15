@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+<section class="donation-section">
+  
+  <h2 class="section-title">🙏 Donate for Puja</h2>
+  
+  <div class="donation-card">
+    
+    <div class="amount-buttons">
+      <button onclick="setAmount(101)">₹101</button>
+      <button onclick="setAmount(251)">₹251</button>
+      <button onclick="setAmount(501)">₹501</button>
+      <button onclick="setAmount(1001)">₹1001</button>
+    </div>
+    
+    <input type="number" id="amount" placeholder="Enter amount (₹)">
+    <input type="text" placeholder="Your Name">
+    
+    <button class="donate-btn" onclick="donateNow()">Donate Now</button>
+    
+  </div>
+  
+</section>
+</body>
+
+</html>
+<style>
+  /* Section */
+.donation-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: lightyellow;
+}
+
+/* Title like gallery */
+.section-title {
+  display: inline-block;
+  background: white;
+  padding: 10px 25px;
+  border-radius: 12px;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+/* Card */
+.donation-card {
+  width: 90%;
+  max-width: 420px;
+  margin: auto;
+  
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons */
+.amount-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.amount-buttons button {
+  padding: 20px;
+  border: none;
+  background: orange;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Inputs */
+.donation-card input {
+  width: 80%;
+  padding: 12px;
+  margin: 10px 0;
+  
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Donate button */
+.donate-btn {
+  width: 100%;
+  padding: 14px;
+  
+  background: green;
+  color: white;
+  border: none;
+  
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+</style>
+<script>
+function setAmount(value) {
+  document.getElementById("amount").value = value;
+}
+
+function donateNow() {
+  const amount = document.getElementById("amount").value;
+
+  if (!amount) {
+    alert("Please enter amount");
+    return;
+  }
+
+  // Redirect to your payment link
+  window.location.href = "https://youtube.com/shorts/YYNVvfNTKtE?si=PIB6PcbujfeAYPGO";
+}
+</script>
