@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -28,7 +29,82 @@ body {
 .navbar a:hover {
   color: orange;
 }
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 20px;
+  background: black;
+  z-index: 1000;
+}
+
+/* Logo center */
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* Icons */
+.menu-icon,
+.search-icon {
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Side Menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+
+  width: 250px;
+  height: 100%;
+
+  background: black;
+  padding-top: 60px;
+
+  transition: 0.3s;
+}
+
+.side-menu a {
+  display: block;
+  color: white;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.side-menu a:hover {
+  background: #ff6f00;
+}
+
+/* Search box */
+.search-box {
+  position: fixed;
+  top: 60px;
+  right: -100%;
+
+  background: white;
+  padding: 10px;
+  transition: 0.3s;
+}
+
+.search-box input {
+  padding: 8px;
+  border: none;
+  outline: none;
+}
 /* HERO */
 .hero {
   height: 100vh;
@@ -305,11 +381,34 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-body {
-  background: url("bg.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+  body{
+  background: linear-gradient(to right, #ff9a00, #ff3c00);
+  color: white;
 }
+footer {
+  background-color: #000;   /* pure black */
+  color: #fff;              /* white text */
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* Links inside footer */
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Hover effect */
+footer a:hover {
+  color: #ff6f00;  /* orange highlight */
+}
+
+/* Optional top border glow */
+footer {
+  border-top: 2px solid #ff6f00;
+}
+
 .gallery img {
   width: 94%;
   height: 250px;
@@ -491,11 +590,8 @@ body {
 }
 
 
-.donation-section {
-  text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #fff8e1, #ffe082);
-}
+
+
 
 .donation-title {
   font-size: 24px;
@@ -504,6 +600,8 @@ body {
 
 .donation-box {
   max-width: 400px;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   background: white;
   padding: 20px;
@@ -668,4 +766,287 @@ input {
 }
 html {
   scroll-behavior: smooth;
+}
+/* Section */
+.updates-section {
+  padding: 60px 20px;
+  
+  text-align: center;
+}
+
+/* Title */
+.updates-title-box {
+  display: inline-block;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+
+  background: white;
+  border-radius: 15px;
+
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff6f00;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* 📰 Ticker */
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  background: #ff6f00;
+  color: white;
+  padding: 10px 0;
+  margin-bottom: 30px;
+}
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Container */
+.updates-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Card */
+.update-card {
+  padding: 20px;
+  border-radius: 15px;
+
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+
+  position: relative;
+  transition: 0.3s;
+}
+
+.update-card:hover {
+  transform: translateY(-6px);
+}
+
+/* LIVE badge */
+.live-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: red;
+  color: white;
+
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 10px;
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+}
+
+/* Text */
+.update-card h3 {
+  margin-bottom: 10px;
+  color: #ff6f00;
+}
+
+.update-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.date {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: gray;
+}
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+
+  width: 250px;
+  height: 100%;
+
+
+  padding-top: 70px;
+
+  transition: 0.3s;
+  z-index: 2000; /* VERY IMPORTANT */
+}
+.side-menu a {
+  display: block;
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-size: 18px;
+}
+/* Hide updates at first */
+#updatesContainer {
+  display: none;
+}
+
+/* Locked message */
+#lockedMessage {
+  color: white;
+  font-size: 18px;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+.p16 {
+  color: yellow;
+}
+/* Section */
+.gallery-section {
+  padding: 40px 20px;
+  
+}
+
+/* Title */
+.gallery-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #000;
+
+  background: white;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 30px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Container */
+.gallery-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grid */
+.gallery-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+/* Hide scrollbar */
+.gallery-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Images */
+.gallery-grid img {
+  width: 160px;
+  height: 220px;
+  object-fit: cover;
+
+  border-radius: 10px;
+  flex-shrink: 0;
+
+  transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(255,255,255,0.7);
+  border: none;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  z-index: 10;
+}
+
+.nav-btn.left {
+  left: 5px;
+}
+
+.nav-btn.right {
+  right: 5px;
+}
+  /* Container */
+.puja-start-box {
+  margin: 20px auto;
+  padding: 20px;
+
+  width: 90%;
+  max-width: 350px;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+
+  border-radius: 20px;
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: fadeIn 1s ease;
+}
+
+/* Text */
+.puja-start-box h2 {
+  margin: 0 0 15px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Button */
+.update-btn {
+  display: inline-block;
+  padding: 10px 20px;
+
+  background: white;
+  color: black;
+
+  border-radius: 25px;
+  text-decoration: none;
+
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* Hover */
+.update-btn:hover {
+  background: orange;
+  color: white;
+  box-shadow: 0 0 15px orange;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
